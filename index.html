@@ -128,6 +128,9 @@ h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:cla
 .works figure{ margin:0; overflow:hidden; border-radius:var(--r); aspect-ratio:4/5; background:var(--bg2); }
 .works figure:nth-child(even){ width:78%; justify-self:end; }
 .works img{ width:100%; height:100%; object-fit:cover; transition:transform 1.2s ease; }
+/* 다올 "사진 다 보여주진 말고 3줄로만": 모바일 1장씩 3줄 · 768 이상 2장씩 3줄(6장). 나머지는 블로그 · 인스타로 */
+.works figure:nth-child(n+4){ display:none; }
+@media (min-width:768px){ .works figure:nth-child(n+4){ display:block; } .works figure:nth-child(n+7){ display:none; } }
 @media (hover:hover){ .works figure:hover img{ transform:scale(1.03); } }
 @media (min-width:768px){
   .works{ grid-template-columns:repeat(12, minmax(0,1fr)); gap:40px 24px; align-items:start; }
@@ -258,24 +261,24 @@ h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:cla
       <p class="q">사소한 생각들이 <span class="nw">사용자를 편하게 합니다.</span></p>
     </div>
   </section>
-  <section class="plate chapter" aria-label="훈민인테리어의 시선">
+  <section class="plate chapter" aria-label="현장 사진">
     <picture>
       <source media="(max-width:767.98px)" srcset="hm-c2-m.webp" width="1080" height="1350" />
       <img src="hm-c2.webp" alt="흰 천장과 실링팬, 매입 조명" width="1920" height="1080" loading="lazy" />
     </picture>
     <div class="txt reveal">
-      <span class="en">Our View</span>
-      <p class="q">자극적이지 않으면서도, 사진을 찍으면 예쁘고, <span class="nw">앉아있으면 더 편안한 공간.</span></p>
-      <p class="q">그 중심엔 <span class="nw">‘디테일’과 ‘균형감’이 있습니다.</span></p>
+      <p class="q">짙은 오크도 잘 풀면 <span class="nw">고급감이 묻어납니다.</span></p>
     </div>
   </section>
-  <section class="plate chapter" aria-label="현장 사진">
+  <section class="plate chapter" aria-label="훈민인테리어의 시선">
     <picture>
       <source media="(max-width:767.98px)" srcset="hm-c5-m.webp" width="1080" height="1440" />
       <img src="hm-c5.webp" alt="아치 개구부와 원목 조명 수납장이 있는 주방" width="1440" height="810" loading="lazy" />
     </picture>
     <div class="txt reveal">
-      <p class="q">짙은 오크도 잘 풀면 <span class="nw">고급감이 묻어납니다.</span></p>
+      <span class="en">Our View</span>
+      <p class="q">자극적이지 않으면서도, 사진을 찍으면 예쁘고, <span class="nw">앉아있으면 더 편안한 공간.</span></p>
+      <p class="q">그 중심엔 <span class="nw">‘디테일’과 ‘균형감’이 있습니다.</span></p>
     </div>
   </section>
   </div>
