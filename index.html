@@ -17,7 +17,7 @@
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="theme-color" content="#F6F4F0" />
+<meta name="theme-color" content="#FFFFFF" />
 <link rel="icon" href="favicon.png" type="image/png" />
 <!-- 시안 도메인 = hunmin-sample.lgt3232.workers.dev. 고객 인계 시 grep lgt3232 → canonical·og:url·og:image·JSON-LD url/image 치환 -->
 <script type="application/ld+json">
@@ -34,146 +34,137 @@
 </script>
 <style>
 @font-face{ font-family:"HM Display"; font-weight:400; font-display:swap; src:url("hm-gilda.woff2") format("woff2"); }
+@font-face{ font-family:"HM Serif"; font-weight:300 500; font-display:swap; src:url("hm-serif.woff2") format("woff2"); }
 @font-face{ font-family:"HM Sans"; font-weight:200 600; font-display:swap; src:url("hm-pretendard.woff2") format("woff2"); }
 
-/* 사장님 피드 톤: 흰 벽 · 밝은 석재 · 원목 · 간접조명. 바탕은 로고 크림을 아주 약하게 (의도된 웜, 드리프트 아님) */
+/* v0.2 · 사장님 레퍼런스(로멘토디자인)의 형식만 — 화면 폭 사진 + 가운데 짧은 명조 문장. 분위기는 밝고 깔끔하게(다올 "깔끔한 분위기로 형식만") */
 :root{
-  --bg:#F6F4F0;
-  --bg2:#ECE8E1;
+  --bg:#FFFFFF;
+  --bg2:#F4F3F1;
   --ink:#1E1C1A;
-  --soft:#5A554E;
+  --soft:#57524C;
   --mute:#6B655C;
-  --line:#D9D4CB;
+  --line:#E2DED8;
   --r:2px;
   --display:"HM Display","HM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"HM Serif","HM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --sans:"HM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 *{ box-sizing:border-box; margin:0; padding:0; }
-html{ scroll-behavior:smooth; scroll-padding-top:116px; -webkit-text-size-adjust:100%; }
+html{ scroll-behavior:auto; scroll-padding-top:122px; -webkit-text-size-adjust:100%; }
 body{ font-family:var(--sans); color:var(--ink); background:var(--bg); line-height:1.8; font-size:16px; -webkit-font-smoothing:antialiased; word-break:keep-all; overflow-wrap:break-word; }
 img{ max-width:100%; height:auto; display:block; }
 a{ color:inherit; }
 :focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+[tabindex="-1"]:focus{ outline:none; }
 .wrap{ width:min(100% - 40px, 1180px); margin-inline:auto; }
 .nw{ white-space:nowrap; }
 
-/* 헤더 */
+/* 헤더: 얇은 글자 메뉴 · 버튼 대신 전화 글자 링크 */
 .top{ position:sticky; top:0; z-index:50; background:var(--bg); border-bottom:1px solid var(--line); }
 .top .bar{ display:flex; align-items:center; justify-content:space-between; gap:16px; height:68px; }
 .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; }
 .brand img{ height:40px; width:auto; }
-.brand span{ font-family:var(--display); font-size:.82rem; letter-spacing:.32em; color:var(--soft); }
-.nav{ display:none; gap:30px; font-size:.92rem; }
+.brand span{ font-family:var(--display); font-size:.8rem; letter-spacing:.32em; color:var(--mute); }
+.nav{ display:none; gap:30px; font-size:.9rem; font-weight:300; }
 .nav a{ text-decoration:none; color:var(--soft); }
-.top .btn{ min-height:40px; padding:0 18px; font-size:.86rem; }
-.snav{ display:flex; gap:2px; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; border-top:1px solid var(--line); padding:0 12px; }
-.snav::-webkit-scrollbar{ display:none; }
-.snav a{ flex:0 0 auto; display:flex; align-items:center; min-height:44px; padding:0 12px; font-size:.9rem; text-decoration:none; color:var(--soft); white-space:nowrap; }
-.snav a:first-child{ margin-left:auto; } .snav a:last-child{ margin-right:auto; }
-@media (min-width:900px){ .nav{ display:flex; } .snav{ display:none; } html{ scroll-padding-top:76px; } .top .bar{ display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); } .top .bar .btn{ justify-self:end; } }
-@media (max-width:899px){ .top .btn{ display:none; } .brand span{ display:none; } }
+.tel-link{ display:none; font-size:.88rem; letter-spacing:.02em; text-decoration:none; color:var(--ink); border-bottom:1px solid var(--ink); padding-bottom:2px; }
+.snav{ display:flex; border-top:1px solid var(--line); padding:0 4px; }
+.snav a{ flex:1 1 0; display:flex; align-items:center; justify-content:center; min-height:44px; font-size:.86rem; font-weight:300; text-decoration:none; color:var(--soft); white-space:nowrap; }
+@media (min-width:900px){ .nav{ display:flex; } .snav{ display:none; } .tel-link{ display:inline-block; } html{ scroll-padding-top:78px; } .top .bar{ display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); } .tel-link{ justify-self:end; } }
+@media (max-width:899.98px){ .brand span{ display:none; } }
 @media (hover:hover){ .nav a:hover, .snav a:hover{ color:var(--ink); } }
 
 /* 버튼 */
 .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:50px; padding:0 24px; border:1px solid var(--ink); border-radius:var(--r); text-decoration:none; font-weight:500; font-size:.94rem; color:var(--ink); background:transparent; transition:background-color .25s, color .25s, transform .1s; }
-.btn.fill{ background:var(--ink); color:var(--bg); }
+.btn.fill{ background:var(--ink); color:#FFFFFF; }
 .btn:active{ transform:scale(.98); }
-@media (hover:hover){ .btn:hover{ background:var(--ink); color:var(--bg); } .btn.fill:hover{ background:#000000; } }
+@media (hover:hover){ .btn:hover{ background:var(--ink); color:#FFFFFF; } .btn.fill:hover{ background:#000000; } }
 
-/* 공통 */
+/* 화면 폭 사진 장(章): 사진 위 가운데 짧은 명조 문장 · 밝은 베일로 깔끔하게 */
+.plate{ position:relative; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; background:var(--bg2); }
+.plate picture, .plate picture img{ position:absolute; inset:0; width:100%; height:100%; }
+.plate picture img{ object-fit:cover; }
+.plate::after{ content:""; position:absolute; inset:0; background:radial-gradient(ellipse 62% 48% at 50% 50%, rgba(255,255,255,.86) 0%, rgba(255,255,255,.62) 55%, rgba(255,255,255,.12) 100%); }
+.plate .txt{ position:relative; z-index:1; width:min(100% - 40px, 640px); }
+.plate .en{ display:block; font-family:var(--display); font-size:.86rem; letter-spacing:.3em; text-transform:uppercase; color:var(--soft); }
+.plate .q{ font-family:var(--serif); font-weight:400; font-size:clamp(1.3rem, 4.4vw, 2.1rem); line-height:1.7; letter-spacing:-.01em; margin-top:18px; }
+.plate .q + .q{ font-size:clamp(1rem, 2.8vw, 1.25rem); color:var(--soft); margin-top:12px; }
+.hero{ height:calc(100svh - 113px); min-height:520px; max-height:960px; }
+@media (min-width:900px){ .hero{ height:calc(100svh - 69px); } }
+.hero h1{ font-family:var(--serif); font-weight:400; font-size:clamp(1.5rem, 5vw, 2.5rem); line-height:1.6; letter-spacing:-.01em; margin-top:18px; }
+.hero .sub{ margin-top:14px; font-size:.95rem; color:var(--soft); }
+.chapter{ height:min(78svh, 760px); min-height:440px; }
+
+/* 공통 섹션 */
 .sec{ padding:120px 0; }
 .sec.alt{ background:var(--bg2); }
-.en{ display:block; font-family:var(--display); font-size:.9rem; letter-spacing:.26em; text-transform:uppercase; color:var(--mute); }
-h2{ font-family:var(--display); font-weight:400; font-size:clamp(2.4rem, 7vw, 4.4rem); line-height:1.05; letter-spacing:-.01em; margin-top:16px; }
-h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:clamp(1rem, 2.4vw, 1.15rem); letter-spacing:0; color:var(--soft); margin-top:14px; }
+.sec .en{ display:block; font-family:var(--display); font-size:.86rem; letter-spacing:.3em; text-transform:uppercase; color:var(--mute); }
+h2{ font-family:var(--display); font-weight:400; font-size:clamp(2.2rem, 6vw, 3.8rem); line-height:1.05; letter-spacing:-.01em; margin-top:16px; }
+h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:clamp(1rem, 2.4vw, 1.1rem); letter-spacing:0; color:var(--soft); margin-top:14px; }
 
-/* 히어로: 완공 사진 + 아래 어두운 그라데이션(R-11) */
-.hero{ position:relative; min-height:min(94svh, 900px); display:flex; align-items:flex-end; overflow:hidden; background:#2A2724; color:#F6F4F0; }
-.hero > img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 60%; }
-.hero::after{ content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(20,18,16,.85) 0%, rgba(20,18,16,.6) 50%, rgba(20,18,16,.2) 80%, rgba(20,18,16,0) 100%); }
-.hero .wrap{ position:relative; z-index:1; padding:140px 0 72px; }
-.hero .en{ color:#E6E1D8; }
-.hero h1{ font-weight:300; font-size:clamp(1.9rem, 6vw, 3.6rem); line-height:1.3; letter-spacing:-.025em; margin-top:18px; max-width:15em; }
-.hero .tags{ margin-top:16px; color:#E6E1D8; font-size:.95rem; }
-.hero .tags span{ white-space:nowrap; }
-.hero .btn{ border-color:#F6F4F0; color:#F6F4F0; }
-.hero .btn.fill{ background:#F6F4F0; color:#1E1C1A; }
-@media (hover:hover){ .hero .btn:hover{ background:#F6F4F0; color:#1E1C1A; } .hero .btn.fill:hover{ background:#FFFFFF; } }
-.hero :focus-visible{ outline-color:#F6F4F0; }
-.cta3{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; margin-top:32px; max-width:600px; }
-.cta3 .btn:first-child{ grid-column:1 / -1; }
-@media (max-width:439px){ .cta3{ grid-template-columns:minmax(0,1fr); } }
-@media (min-width:640px){ .cta3{ display:flex; flex-wrap:wrap; } }
-
-@media (max-width:899px){
-  .hero > img{ object-position:50% 28%; }
-  .hero::after{ background:linear-gradient(to top, rgba(20,18,16,.9) 0%, rgba(20,18,16,.76) 50%, rgba(20,18,16,.45) 80%, rgba(20,18,16,.1) 100%); }
-}
-
-/* 소개 */
-.about{ display:grid; gap:48px; }
-.statement{ font-weight:300; font-size:clamp(1.5rem, 4vw, 2.3rem); line-height:1.5; letter-spacing:-.02em; margin-top:26px; }
-.about-text p{ color:var(--soft); margin-top:22px; max-width:34em; }
-.about-text p.first{ margin-top:36px; }
-.about figure{ margin:0; overflow:hidden; border-radius:var(--r); aspect-ratio:4/5; }
-.about figure img{ width:100%; height:100%; object-fit:cover; }
-@media (min-width:900px){ .about{ grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:88px; align-items:center; } }
+/* 소개: 가운데 좁은 단 */
+.about{ text-align:center; max-width:640px; margin-inline:auto; }
+.about p{ color:var(--soft); font-weight:300; font-size:1.05rem; margin-top:20px; }
+.about p.first{ margin-top:36px; }
 
 /* 서비스 */
 .svc{ list-style:none; margin-top:56px; border-top:1px solid var(--ink); }
 .svc li{ display:grid; grid-template-columns:52px minmax(0,1fr); gap:6px 16px; padding:26px 2px; border-bottom:1px solid var(--line); align-items:baseline; }
 .svc i{ font-style:normal; font-family:var(--display); font-size:1.1rem; color:var(--mute); }
-.svc b{ font-weight:400; font-size:clamp(1.12rem, 2.6vw, 1.4rem); letter-spacing:-.01em; }
+.svc b{ font-weight:400; font-size:clamp(1.12rem, 2.6vw, 1.35rem); letter-spacing:-.01em; }
 .svc em{ grid-column:2; font-style:normal; color:var(--soft); font-size:.95rem; font-variant-numeric:tabular-nums; }
 @media (min-width:768px){ .svc li{ grid-template-columns:72px minmax(0,1fr) auto; } .svc em{ grid-column:auto; text-align:right; } }
 .svc-more{ margin-top:26px; color:var(--soft); font-size:.95rem; }
 
-/* 작업 */
-.works{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; margin-top:56px; }
-.works figure{ margin:0; overflow:hidden; border-radius:var(--r); aspect-ratio:3/4; background:var(--bg2); }
-.works figure.wide{ grid-column:1 / -1; aspect-ratio:4/3; }
+/* 작업: 크고 작은 사진을 엇갈려 배치(잡지형) */
+.works{ display:grid; grid-template-columns:minmax(0,1fr); gap:28px; margin-top:64px; }
+.works figure{ margin:0; overflow:hidden; border-radius:var(--r); aspect-ratio:4/5; background:var(--bg2); }
+.works figure:nth-child(even){ width:78%; justify-self:end; }
 .works img{ width:100%; height:100%; object-fit:cover; transition:transform 1.2s ease; }
 @media (hover:hover){ .works figure:hover img{ transform:scale(1.03); } }
-@media (min-width:900px){ .works{ grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; grid-auto-flow:dense; } .works figure.wide{ grid-column:span 2; grid-row:span 2; aspect-ratio:auto; } }
-.works-more{ display:flex; flex-wrap:wrap; align-items:center; gap:14px 24px; margin-top:36px; }
+@media (min-width:768px){
+  .works{ grid-template-columns:repeat(12, minmax(0,1fr)); gap:40px 24px; align-items:start; }
+  .works figure:nth-child(even){ width:auto; justify-self:stretch; }
+  .works figure:nth-child(4n+1){ grid-column:1 / span 6; }
+  .works figure:nth-child(4n+2){ grid-column:8 / span 5; margin-top:96px; }
+  .works figure:nth-child(4n+3){ grid-column:2 / span 4; }
+  .works figure:nth-child(4n+4){ grid-column:7 / span 6; margin-top:48px; }
+}
+.works-more{ display:flex; flex-wrap:wrap; align-items:center; gap:14px 24px; margin-top:56px; }
 .works-note{ color:var(--soft); font-size:.92rem; }
-@media (max-width:439px){ .works-more .btn{ width:100%; } }
+@media (max-width:439.98px){ .works-more .btn{ width:100%; } }
 .works-note a{ text-underline-offset:3px; }
 
 /* 사례 */
-.case{ display:grid; gap:40px; margin-top:56px; }
+.case{ display:grid; grid-template-columns:minmax(0,1fr); gap:40px; margin-top:56px; }
 .case figure{ margin:0; overflow:hidden; border-radius:var(--r); }
 .case figure img{ width:100%; height:auto; }
 .case h3{ font-weight:400; font-size:clamp(1.3rem, 3.2vw, 1.75rem); line-height:1.45; letter-spacing:-.02em; }
 .case h3 span{ display:block; color:var(--soft); font-size:.7em; margin-top:6px; }
-.case blockquote{ margin-top:28px; font-weight:300; font-size:1.12rem; line-height:1.8; }
-.case blockquote cite{ display:block; font-style:normal; font-size:.88rem; color:var(--mute); margin-top:8px; }
-.kw{ display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; list-style:none; }
-.kw li{ padding:6px 14px; border:1px solid var(--line); border-radius:var(--r); font-size:.9rem; color:var(--soft); background:var(--bg); }
+.case blockquote{ margin-top:28px; font-family:var(--serif); font-weight:400; font-size:1.12rem; line-height:1.8; }
+.case blockquote cite{ display:block; font-family:var(--sans); font-style:normal; font-size:.88rem; color:var(--mute); margin-top:8px; }
+.kw{ list-style:none; margin-top:24px; border-top:1px solid var(--line); }
+.kw li{ padding:10px 0; border-bottom:1px solid var(--line); font-size:.95rem; color:var(--soft); }
 .spec{ margin-top:30px; border-top:1px solid var(--ink); }
 .spec > div{ display:grid; grid-template-columns:84px minmax(0,1fr); gap:14px; padding:14px 0; border-bottom:1px solid var(--line); font-size:.94rem; }
 .spec dt{ color:var(--mute); }
 .case .more{ display:inline-block; margin-top:24px; font-size:.94rem; text-underline-offset:4px; }
 @media (min-width:900px){ .case{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:72px; align-items:start; } .case figure{ position:sticky; top:100px; } }
 
-/* 시선 */
-.view{ text-align:center; }
-.view p{ font-weight:300; font-size:clamp(1.35rem, 3.6vw, 2.1rem); line-height:1.6; letter-spacing:-.02em; margin:28px auto 0; max-width:24em; }
-.view p + p{ color:var(--soft); font-size:clamp(1rem, 2.4vw, 1.15rem); margin-top:20px; }
-
 /* 문의 · 오시는 길 */
-.contact{ display:grid; gap:40px; margin-top:56px; }
-.lead-msg p{ font-weight:300; font-size:clamp(1.15rem, 2.8vw, 1.4rem); line-height:1.7; }
+.contact{ display:grid; grid-template-columns:minmax(0,1fr); gap:40px; margin-top:56px; }
+.lead-msg p{ font-family:var(--serif); font-weight:400; font-size:clamp(1.12rem, 2.8vw, 1.35rem); line-height:1.75; }
 .lead-msg p + p{ margin-top:6px; }
-.lead-msg .visit-note{ font-size:1rem; color:var(--soft); margin-top:18px; }
+.lead-msg .visit-note{ font-family:var(--sans); font-size:1rem; color:var(--soft); margin-top:18px; }
 .c-btns{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; margin-top:28px; }
 .c-btns .btn:first-child{ grid-column:1 / -1; }
-@media (max-width:439px){ .c-btns{ grid-template-columns:minmax(0,1fr); } }
+@media (max-width:439.98px){ .c-btns{ grid-template-columns:minmax(0,1fr); } }
 .info{ border-top:1px solid var(--ink); margin-top:36px; }
 .info > div{ display:grid; grid-template-columns:84px minmax(0,1fr); gap:14px; padding:15px 0; border-bottom:1px solid var(--line); font-size:.95rem; }
 .info dt{ color:var(--mute); }
 .info a{ text-underline-offset:3px; }
-.map{ width:100%; height:280px; border:0; border-radius:var(--r); background:var(--bg2); display:block; filter:grayscale(.85) contrast(.95); }
+.map{ width:100%; height:280px; border:0; border-radius:var(--r); background:var(--bg); display:block; filter:grayscale(.85) contrast(.95); }
 .map-link{ display:inline-block; margin-top:12px; font-size:.92rem; text-underline-offset:3px; }
 @media (min-width:768px){ .map{ height:420px; } }
 @media (min-width:1000px){ .contact{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:64px; } }
@@ -189,7 +180,7 @@ h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:cla
 /* 모바일 하단 바: 전화 · 톡톡 · 인스타 */
 .quick{ position:fixed; left:0; right:0; bottom:0; z-index:60; display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:6px; padding:8px 10px calc(8px + env(safe-area-inset-bottom)); background:var(--bg); border-top:1px solid var(--line); }
 .quick a{ display:flex; align-items:center; justify-content:center; min-height:48px; border:1px solid var(--ink); border-radius:var(--r); font-size:.86rem; font-weight:500; text-decoration:none; text-align:center; }
-.quick a.fill{ background:var(--ink); color:var(--bg); }
+.quick a.fill{ background:var(--ink); color:#FFFFFF; }
 @media (min-width:900px){ .quick{ display:none; } }
 
 /* 나타나기 (모션 강제 재생 · 다올 방침) */
@@ -209,7 +200,7 @@ h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:cla
       <a href="#case">사례</a>
       <a href="#contact">문의</a>
     </nav>
-    <a class="btn fill" href="tel:01026414877">전화 상담</a>
+    <a class="tel-link" href="tel:01026414877">상담 <span class="nw">010-2641-4877</span></a>
   </div>
   <nav class="snav" aria-label="섹션 바로가기">
     <a href="#about">소개</a>
@@ -221,31 +212,35 @@ h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:cla
 </header>
 
 <main id="top">
-  <section class="hero">
-    <img src="hm-hero.webp" alt="아치 벽과 원목 수납장, 간접조명이 있는 주방 아일랜드" width="1440" height="1440" fetchpriority="high" />
-    <div class="wrap">
-      <span class="en reveal">Hunmin Interior</span>
-      <h1 class="reveal">"상상하던 공간에 살고 <span class="nw">있나요?"</span></h1>
-      <p class="tags reveal"><span>동탄인테리어</span> · <span>상업공간 인테리어</span> · <span>원상복구</span> · <span>사무실인테리어</span></p>
-      <div class="cta3 reveal">
-        <a class="btn fill" href="tel:01026414877">전화 상담 <span class="nw">010-2641-4877</span></a>
-        <a class="btn" href="https://talk.naver.com/wyzcagw" target="_blank" rel="noopener">네이버 톡톡</a>
-        <a class="btn" href="https://www.instagram.com/hunmin_interior/" target="_blank" rel="noopener">인스타그램</a>
-      </div>
+  <section class="plate hero" aria-labelledby="hero-h">
+    <picture>
+      <source media="(max-width:767.98px)" srcset="hm-hero-m.webp" width="1080" height="1440" />
+      <img src="hm-hero.webp" alt="간접조명 아래 큰 창으로 빛이 드는 밝은 거실" width="1440" height="810" fetchpriority="high" />
+    </picture>
+    <div class="txt intro">
+      <span class="en">Hunmin Interior</span>
+      <h1 id="hero-h">"상상하던 공간에 <span class="nw">살고 있나요?"</span></h1>
+      <p class="sub"><span class="nw">동탄인테리어</span> · <span class="nw">상업공간 인테리어</span> · <span class="nw">원상복구</span> · <span class="nw">사무실인테리어</span></p>
+    </div>
+  </section>
+
+  <section class="plate chapter" aria-label="훈민인테리어가 만드는 공간">
+    <picture>
+      <source media="(max-width:767.98px)" srcset="hm-c1-m.webp" width="1080" height="1350" />
+      <img src="hm-c1.webp" alt="밝은 석재 아일랜드와 간접조명 주방" width="1920" height="1080" loading="lazy" />
+    </picture>
+    <div class="txt reveal">
+      <p class="q">우리는 늘 <span class="nw">‘보는 공간’이</span> 아닌<br /><span class="nw">‘머무는 공간’을</span> 만든다.</p>
     </div>
   </section>
 
   <section class="sec" id="about" aria-labelledby="about-h">
     <div class="wrap about">
-      <div class="about-text">
-        <span class="en reveal">About</span>
-        <h2 id="about-h" class="reveal">Hunmin<small>훈민인테리어</small></h2>
-        <p class="statement reveal">우리는 늘 <span class="nw">‘보는 공간’이</span> 아닌 <span class="nw">‘머무는 공간’을</span> 만든다.</p>
-        <p class="first reveal">싸고 좋은 것은 없지만 효율성 있는 건강한 디자인으로<br>최저 비용으로 최대한의 효율을 내드립니다.</p>
-        <p class="reveal">공간의 의미, 소비자의 마음을 이해하려 노력하며 작업합니다.</p>
-        <p class="reveal">종합 인테리어 전문, 헬스장 · 이자카야 등 다양한 포트폴리오가 있습니다.</p>
-      </div>
-      <figure class="reveal"><img src="hm-w3.webp" alt="창으로 빛이 드는 밝은 거실과 원목 바닥" width="825" height="1100" loading="lazy" /></figure>
+      <span class="en reveal">About</span>
+      <h2 id="about-h" class="reveal">Hunmin<small>훈민인테리어</small></h2>
+      <p class="first reveal">싸고 좋은 것은 없지만 효율성 있는 건강한 디자인으로<br />최저 비용으로 최대한의 효율을 내드립니다.</p>
+      <p class="reveal">공간의 의미, 소비자의 마음을 이해하려 노력하며 작업합니다.</p>
+      <p class="reveal">종합 인테리어 전문, 헬스장 · 이자카야 등 <span class="nw">다양한 포트폴리오가 있습니다.</span></p>
     </div>
   </section>
 
@@ -256,8 +251,8 @@ h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:cla
       <ul class="svc">
         <li class="reveal"><i>01</i><b>상업공간 인테리어</b><em>상담 후 견적</em></li>
         <li class="reveal"><i>02</i><b>상업공간 브랜딩 공간기획</b><em>100,000원</em></li>
-        <li class="reveal"><i>03</i><b>주거공간 비즈니스 등급 인테리어</b><em>상담 후 견적</em></li>
-        <li class="reveal"><i>04</i><b>주거공간 하이엔드 등급 인테리어</b><em>상담 후 견적</em></li>
+        <li class="reveal"><i>03</i><b>주거공간 비즈니스 <span class="nw">등급 인테리어</span></b><em>상담 후 견적</em></li>
+        <li class="reveal"><i>04</i><b>주거공간 하이엔드 <span class="nw">등급 인테리어</span></b><em>상담 후 견적</em></li>
       </ul>
       <p class="svc-more reveal">원상복구 · 사무실인테리어도 함께 맡습니다.</p>
     </div>
@@ -268,20 +263,31 @@ h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:cla
       <span class="en reveal">Works</span>
       <h2 id="works-h" class="reveal">Works<small>완공 현장</small></h2>
       <div class="works">
-        <figure class="wide reveal"><img src="hm-w6.webp" alt="블랙 프레임 유리 중문" width="1100" height="1100" loading="lazy" /></figure>
+        <figure class="reveal"><img src="hm-w6.webp" alt="블랙 프레임 유리 중문" width="1100" height="1100" loading="lazy" /></figure>
         <figure class="reveal"><img src="hm-w1.webp" alt="화이트 주방과 대리석 아일랜드" width="825" height="1100" loading="lazy" /></figure>
         <figure class="reveal"><img src="hm-w2.webp" alt="원목 조명 수납장이 있는 주방" width="825" height="1100" loading="lazy" /></figure>
         <figure class="reveal"><img src="hm-w4.webp" alt="원목 하부장과 석재 상판 세면대" width="825" height="1100" loading="lazy" /></figure>
-        <figure class="reveal"><img src="hm-w5.webp" alt="석재 일체형 세면대와 수전" width="825" height="1100" loading="lazy" /></figure>
         <figure class="reveal"><img src="hm-w11.webp" alt="간접조명이 들어간 아치 벽과 타원 거울" width="897" height="1100" loading="lazy" /></figure>
+        <figure class="reveal"><img src="hm-w5.webp" alt="석재 일체형 세면대와 수전" width="825" height="1100" loading="lazy" /></figure>
         <figure class="reveal"><img src="hm-w12.webp" alt="원목 벽과 조명이 들어간 아치 거울이 있는 욕실" width="880" height="1100" loading="lazy" /></figure>
         <figure class="reveal"><img src="hm-w9.webp" alt="원형 거울과 벽등이 있는 욕실" width="825" height="1100" loading="lazy" /></figure>
-        <figure class="reveal"><img src="hm-w10.webp" alt="블랙 상부장과 화이트 아일랜드 주방" width="825" height="1100" loading="lazy" /></figure>
       </div>
       <div class="works-more reveal">
         <a class="btn" href="https://blog.naver.com/dongmin8888" target="_blank" rel="noopener">블로그에서 시공기 보기</a>
-        <p class="works-note">더 많은 현장은 <a href="https://www.instagram.com/hunmin_interior/" target="_blank" rel="noopener">인스타그램</a>에서도 보실 수 있어요.</p>
+        <p class="works-note">더 많은 현장은 <a href="https://www.instagram.com/hunmin_interior/" target="_blank" rel="noopener">인스타그램</a>에서도 <span class="nw">보실 수 있어요.</span></p>
       </div>
+    </div>
+  </section>
+
+  <section class="plate chapter" aria-label="훈민인테리어의 시선">
+    <picture>
+      <source media="(max-width:767.98px)" srcset="hm-c2-m.webp" width="1080" height="1350" />
+      <img src="hm-c2.webp" alt="흰 천장과 실링팬, 매입 조명" width="1920" height="1080" loading="lazy" />
+    </picture>
+    <div class="txt reveal">
+      <span class="en">Our View</span>
+      <p class="q">자극적이지 않으면서도, 사진을 찍으면 예쁘고, <span class="nw">앉아있으면 더 편안한 공간.</span></p>
+      <p class="q">그 중심엔 <span class="nw">‘디테일’과 ‘균형감’이 있다.</span></p>
     </div>
   </section>
 
@@ -303,7 +309,7 @@ h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:cla
             <div><dt>위치</dt><dd>동탄 목동, 조용한 주택가 골목</dd></div>
             <div><dt>공사 범위</dt><dd>외관 슬라이딩 도어, 목재 기둥 마감, 아치 창 프레임 제작, 내부 마감, 타일 및 조명 설치</dd></div>
             <div><dt>주요 재료</dt><dd>우드 필름, 핑크톤 소형 타일, 블랙 알루미늄 창틀, 위시본 체어, 매트 도장 테이블, 그레이 폴리싱 바닥</dd></div>
-            <div><dt>포인트</dt><dd>슬라이딩 도어와 아치창이 주는 대비감, 은은한 타일 컬러감</dd></div>
+            <div><dt>포인트</dt><dd>슬라이딩 도어와 아치창이 주는 대비감, 은은한 <span class="nw">타일 컬러감</span></dd></div>
           </dl>
           <a class="more reveal" href="https://m.blog.naver.com/dongmin8888/223927714362" target="_blank" rel="noopener">블로그에서 시공기 전체 보기</a>
         </div>
@@ -311,22 +317,14 @@ h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:cla
     </div>
   </section>
 
-  <section class="sec view" aria-label="훈민인테리어의 시선">
-    <div class="wrap">
-      <span class="en reveal">Our View</span>
-      <p class="reveal">자극적이지 않으면서도, 사진을 찍으면 예쁘고, 앉아있으면 더 편안한 공간.</p>
-      <p class="reveal">그 중심엔 ‘디테일’과 ‘균형감’이 있다.</p>
-    </div>
-  </section>
-
-  <section class="sec alt" id="contact" aria-labelledby="contact-h">
+  <section class="sec" id="contact" aria-labelledby="contact-h">
     <div class="wrap">
       <span class="en reveal">Contact</span>
       <h2 id="contact-h" class="reveal">Contact<small>상담 · 오시는 길</small></h2>
       <div class="contact">
         <div>
           <div class="lead-msg reveal">
-            <p>모든 문의는 <span class="nw">010-2641-4877</span>이 가장 빠르며</p>
+            <p>모든 문의는 <span class="nw">010-2641-4877</span>이 <span class="nw">가장 빠르며</span></p>
             <p>문의 시 주소와 업종을 알려주시면 상담드리겠습니다.</p>
             <p class="visit-note">방문 예약 주시면 감사하겠습니다!</p>
           </div>
@@ -386,9 +384,28 @@ h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:cla
     },120);
   }
   var started=false; function go(){ if(started) return; started=true; start(); }
+  /* 히어로 문장 등장 */
+  var intro=document.querySelector('.intro'); if(intro){ intro.style.opacity='0'; intro.style.transform='translateY(14px)'; intro.style.transition='opacity 1.2s ease, transform 1.2s ease'; setTimeout(function(){ intro.style.opacity='1'; intro.style.transform='none'; },80); }
+  /* 부드러운 스크롤(R-25): rAF 직접 이동 · 1초 폴백 · 휠/터치면 중단 · 끝나면 대상 섹션으로 포커스 */
+  document.addEventListener('click',function(e){
+    var a=e.target.closest ? e.target.closest('a[href^="#"]') : null; if(!a) return;
+    var id=a.getAttribute('href'); if(id.length<2) return;
+    var t=document.querySelector(id); if(!t) return;
+    e.preventDefault();
+    var head=document.querySelector('.top'); var off=(head ? head.getBoundingClientRect().height : 0)+10;
+    var y0=window.pageYOffset; var y1=(id==='#top') ? 0 : Math.max(0, t.getBoundingClientRect().top+y0-off);
+    var dur=700, s0=null, done=false;
+    function ease(p){ return p<.5 ? 4*p*p*p : 1-Math.pow(-2*p+2,3)/2; }
+    function stop(){ done=true; window.removeEventListener('wheel',stop); window.removeEventListener('touchstart',stop); }
+    function finish(){ stop(); if(!t.hasAttribute('tabindex')){ t.setAttribute('tabindex','-1'); } t.focus({preventScroll:true}); }
+    window.addEventListener('wheel',stop,{passive:true}); window.addEventListener('touchstart',stop,{passive:true});
+    function step(ts){ if(done) return; if(s0===null) s0=ts; var p=Math.min((ts-s0)/dur,1); window.scrollTo(0, y0+(y1-y0)*ease(p)); if(p<1){ requestAnimationFrame(step); } else { finish(); } }
+    requestAnimationFrame(step);
+    setTimeout(function(){ if(!done){ window.scrollTo(0,y1); finish(); } }, dur+300);
+    if(history.pushState){ history.pushState(null,'',id); }
+  });
   if(document.fonts && document.fonts.ready){ document.fonts.ready.then(go); }
   setTimeout(go,1200);
-  setTimeout(function(){ document.querySelectorAll('.hero .reveal').forEach(function(el){ el.classList.add('in'); }); },1600);
 })();
 </script>
 </body>
