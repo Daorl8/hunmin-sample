@@ -93,12 +93,9 @@ a{ color:inherit; }
 .hero h1{ font-family:var(--serif); font-weight:400; font-size:clamp(1.5rem, 5vw, 2.5rem); line-height:1.6; letter-spacing:-.01em; margin-top:18px; }
 .hero .sub{ margin-top:14px; font-size:.95rem; color:var(--soft); }
 
-/* 사진 장 쌓기(다올 "슥 내리는 모션"): 각 장이 헤더 아래에 붙고 다음 장이 위로 덮으며 올라옴 · 확대 효과 없음(v0.2.5 다올) */
-.stack > section{ position:sticky; top:113px; height:calc(100svh - 112px); min-height:480px; max-height:none; }
-@media (min-width:900px){ .stack > section{ top:69px; height:calc(100svh - 69px); } }
-.stack > section + section{ box-shadow:0 -18px 40px rgba(30,28,26,.10); }
-/* 낮은 화면(폰 가로 등): 장이 화면보다 커져 문장이 묻히므로 쌓기 해제(코드 검토 2026-11-23 · R-39) */
-@media (max-height:599.98px){ .stack > section{ position:relative; top:auto; } }
+/* 사진 장: 화면 높이 장이 차례로 스크롤됨 · 글자는 사진과 함께 움직임(v0.2.7 다올 — 쌓기 해제) · 확대 효과 없음 */
+.stack > section{ position:relative; height:calc(100svh - 112px); min-height:480px; }
+@media (min-width:900px){ .stack > section{ height:calc(100svh - 69px); } }
 
 /* 공통 섹션 */
 .sec{ padding:120px 0; }
@@ -243,7 +240,7 @@ h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:cla
   <section class="plate chapter">
     <picture>
       <source media="(max-width:767.98px)" srcset="hm-c6-m.webp" width="1080" height="1440" />
-      <img src="hm-c6.webp" alt="원목 프레임 유리문이 끝에 있는 밝은 복도" width="1920" height="1080" decoding="async" />
+      <img src="hm-c6.webp" alt="원목 프레임 유리문이 끝에 있는 밝은 복도" width="1920" height="1080" loading="lazy" decoding="async" />
     </picture>
     <div class="txt">
       <p class="q">반듯한 선 정리만 해도 <span class="nw">집 퀄리티가 훨씬 살아납니다.</span></p>
@@ -252,7 +249,7 @@ h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:cla
   <section class="plate chapter">
     <picture>
       <source media="(max-width:767.98px)" srcset="hm-c4-m.webp" width="1080" height="1440" />
-      <img src="hm-c4.webp" alt="석재 상판 위 수전과 싱크볼, 간접조명 수납장" width="1920" height="1080" decoding="async" />
+      <img src="hm-c4.webp" alt="석재 상판 위 수전과 싱크볼, 간접조명 수납장" width="1920" height="1080" loading="lazy" decoding="async" />
     </picture>
     <div class="txt">
       <p class="q">사소한 생각들이 <span class="nw">사용자를 편하게 합니다.</span></p>
@@ -261,7 +258,7 @@ h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:cla
   <section class="plate chapter">
     <picture>
       <source media="(max-width:767.98px)" srcset="hm-c5-m.webp" width="1080" height="1440" />
-      <img src="hm-c5.webp" alt="아치 개구부와 원목 조명 수납장이 있는 주방" width="1440" height="810" decoding="async" />
+      <img src="hm-c5.webp" alt="아치 개구부와 원목 조명 수납장이 있는 주방" width="1440" height="810" loading="lazy" decoding="async" />
     </picture>
     <div class="txt">
       <p class="q">짙은 오크도 잘 풀면 <span class="nw">고급감이 묻어납니다.</span></p>
@@ -270,7 +267,7 @@ h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:cla
   <section class="plate chapter" aria-label="훈민인테리어의 시선">
     <picture>
       <source media="(max-width:767.98px)" srcset="hm-c2-m.webp" width="1080" height="1350" />
-      <img src="hm-c2.webp" alt="흰 천장과 실링팬, 매입 조명" width="1920" height="1080" decoding="async" />
+      <img src="hm-c2.webp" alt="흰 천장과 실링팬, 매입 조명" width="1920" height="1080" loading="lazy" decoding="async" />
     </picture>
     <div class="txt">
       <span class="en">Our View</span>
