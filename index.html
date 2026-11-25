@@ -51,7 +51,7 @@
   --sans:"HM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 *{ box-sizing:border-box; margin:0; padding:0; }
-html{ scroll-behavior:auto; scroll-padding-top:122px; -webkit-text-size-adjust:100%; }
+html{ scroll-behavior:auto; scroll-padding-top:10px; -webkit-text-size-adjust:100%; }
 body{ font-family:var(--sans); color:var(--ink); background:var(--bg); line-height:1.8; font-size:16px; -webkit-font-smoothing:antialiased; word-break:keep-all; overflow-wrap:break-word; }
 img{ max-width:100%; height:auto; display:block; }
 a{ color:inherit; }
@@ -61,7 +61,8 @@ a{ color:inherit; }
 .nw{ white-space:nowrap; }
 
 /* 헤더: 얇은 글자 메뉴 · 버튼 대신 전화 글자 링크 */
-.top{ position:sticky; top:0; z-index:50; background:var(--bg); border-bottom:1px solid var(--line); }
+/* 상단바는 고정하지 않음 — 내리면 위로 지나가 사라짐(v0.2.8 다올 · 로멘토 형식) */
+.top{ position:relative; z-index:50; background:var(--bg); border-bottom:1px solid var(--line); }
 .top .bar{ display:flex; align-items:center; justify-content:space-between; gap:16px; height:68px; }
 .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; }
 .brand img{ height:40px; width:auto; }
@@ -71,7 +72,7 @@ a{ color:inherit; }
 .tel-link{ display:none; font-size:.88rem; letter-spacing:.02em; text-decoration:none; color:var(--ink); border-bottom:1px solid var(--ink); padding-bottom:2px; }
 .snav{ display:flex; border-top:1px solid var(--line); padding:0 4px; }
 .snav a{ flex:1 1 0; display:flex; align-items:center; justify-content:center; min-height:44px; font-size:.86rem; font-weight:300; text-decoration:none; color:var(--soft); white-space:nowrap; }
-@media (min-width:900px){ .nav{ display:flex; } .snav{ display:none; } .tel-link{ display:inline-block; } html{ scroll-padding-top:78px; } .top .bar{ display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); } .tel-link{ justify-self:end; } }
+@media (min-width:900px){ .nav{ display:flex; } .snav{ display:none; } .tel-link{ display:inline-block; } .top .bar{ display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); } .tel-link{ justify-self:end; } }
 @media (max-width:899.98px){ .brand span{ display:none; } }
 @media (hover:hover){ .nav a:hover, .snav a:hover{ color:var(--ink); } }
 
@@ -94,8 +95,10 @@ a{ color:inherit; }
 .hero .sub{ margin-top:14px; font-size:.95rem; color:var(--soft); }
 
 /* 사진 장: 화면 높이 장이 차례로 스크롤됨 · 글자는 사진과 함께 움직임(v0.2.7 다올 — 쌓기 해제) · 확대 효과 없음 */
-.stack > section{ position:relative; height:calc(100svh - 112px); min-height:480px; }
-@media (min-width:900px){ .stack > section{ height:calc(100svh - 69px); } }
+.stack > section{ position:relative; height:100svh; min-height:480px; }
+/* 첫 장(히어로)만 상단바 높이를 빼서 첫 화면에 꼭 맞춤 */
+.stack > .hero{ height:calc(100svh - 114px); }
+@media (min-width:900px){ .stack > .hero{ height:calc(100svh - 69px); } }
 
 /* 공통 섹션 */
 .sec{ padding:120px 0; }
@@ -153,7 +156,7 @@ h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:cla
 .spec > div{ display:grid; grid-template-columns:84px minmax(0,1fr); gap:14px; padding:14px 0; border-bottom:1px solid var(--line); font-size:.94rem; }
 .spec dt{ color:var(--mute); }
 .case .more{ display:inline-block; margin-top:24px; font-size:.94rem; text-underline-offset:4px; }
-@media (min-width:900px){ .case{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:72px; align-items:start; } .case figure{ position:sticky; top:100px; } }
+@media (min-width:900px){ .case{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:72px; align-items:start; } .case figure{ position:sticky; top:32px; } }
 
 /* 문의 · 오시는 길 */
 .contact{ display:grid; grid-template-columns:minmax(0,1fr); gap:40px; margin-top:56px; }
@@ -425,7 +428,7 @@ h2 small{ display:block; font-family:var(--sans); font-weight:300; font-size:cla
     var id=a.getAttribute('href'); if(id.length<2) return;
     var t=document.querySelector(id); if(!t) return;
     e.preventDefault();
-    var head=document.querySelector('.top'); var off=(head ? head.getBoundingClientRect().height : 0)+10;
+    var off=10; /* 상단바가 고정이 아니라 가리지 않음 */
     var y0=window.pageYOffset; var y1=(id==='#top') ? 0 : Math.max(0, t.getBoundingClientRect().top+y0-off);
     var dur=700, s0=null, done=false;
     function ease(p){ return p<.5 ? 4*p*p*p : 1-Math.pow(-2*p+2,3)/2; }
